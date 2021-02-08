@@ -1,0 +1,12 @@
+#!/bin/bash
+action_limit=75;
+df -F %z %m \
+    | grep -e '^/dev/[sh]d' \
+    | sed 's/%//g' \
+    | awk '{print $3" "$1" "$4}' \
+    | sort -r -n \
+    | while read -r pct dsk mnt; do
+        if test $action_limit -le $pct; then
+            echo "$mnt for $dsk is using ${pct}%";
+        fi;
+    done
