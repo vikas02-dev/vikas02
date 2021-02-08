@@ -1,1 +1,12 @@
-this is git file
+#!/bin/sh
+
+i=1
+name="vikas"
+
+while [ $i -le 5 ]
+do
+  echo $name
+
+  i=`expr $i + 1`
+done
+
