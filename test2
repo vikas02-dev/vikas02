@@ -1,38 +1,8 @@
-#!/bin/bash
-user="sg309021"
-application=$1
-servers=$2
-IFS=","
-for server in $servers;do
-if [ $application == "Infini Multi Access" ]
-then
-        scriptDir="ma-scripts"
-
-elif [ $application == "Sabre Multi Access" ]
-then
-        scriptDir="sma-scripts"
-
-elif [ $application == "Direct Access Platform" ]
-then
-        scriptDir="dap-scripts"
-
-elif [ $application == "Connectivity Gateway" ]
-then
-        scriptDir="conngtwy-scripts"
-
-elif [ $application == "AirConnectivity GUI" ]
-then
-        scriptDir="gui-scripts"
-
-elif [ $application=="Supplier Orchestration Engine" ]
-then
-        scriptDir="soe-scripts"
-else
-        echo -e "\n Application not found."
-        exit 1
-		fi
-
-echo -e "\n Validation checkouts started for ${application} on ${server}"
-ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -tt ${user}@fsehlp03 ssh -tt ${user}@${server} /home/muaccess/${scriptDir}/check.status.sh
-echo -e "\n Validation checkouts completed for ${application} on ${server}"
+#!/bin/bash/
+userfile=/tmp/userlist
+username=$`( cat /tmp/userlist | tr '[:upper:]' '[:lower:]')`
+username=$ sed -i -e 's/k//g' /tmp/userlist
+for user in $username
+do
+        echo "$username"
 done
