@@ -1,8 +1,6 @@
 #!/bin/bash/
 userfile=/tmp/userlist
-username=$`( cat /tmp/userlist | tr '[:upper:]' '[:lower:]')`
-username=$ sed -i -e 's/k//g' /tmp/userlist
-for user in $username
-do
-        echo "$username"
-done
+username=`cat /tmp/userlist | tr '[:upper:]' '[:lower:]' | sed 's/k//'`
+
+        echo "user id is ${username}"
+
